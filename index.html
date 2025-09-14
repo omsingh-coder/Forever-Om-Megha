@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Om ❤️ Megha — A Little Website</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page landing">
+  <div class="center">
+    <h1 class="big">Hi Megha…</h1>
+    <p class="lead">This little website is made just for you — from Om ✨</p>
+    <button id="beginBtn" class="btn">Click to Begin the Journey 💫</button>
+    <div class="small-note">Made with ❤️ — Om</div>
+  </div>
+
+  <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+  <script src="script.js"></script>
+  <script>
+    // Landing page specific
+    document.getElementById('beginBtn').addEventListener('click', function(){
+      // Simple transition then go to story
+      document.body.classList.add('fadeOut');
+      setTimeout(()=> location.href = 'story.html', 800);
+    });
+    startBackground('stars'); // start background animation (in script.js)
+  </script>
+</body>
+</html>

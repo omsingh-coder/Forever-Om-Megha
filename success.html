@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>She said YES! — Om & Megha</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page success">
+  <nav class="topbar">
+    <a href="index.html" class="logo">Om ❤️ Megha</a>
+  </nav>
+
+  <main class="container success-box">
+    <h1 class="big">She said <span class="accent">Yes</span>! 🎉</h1>
+    <p class="lead">Thank you, Megha. You just made Om the happiest person alive.</p>
+
+    <div class="center">
+      <a href="index.html" class="btn">Celebrate Again</a>
+    </div>
+    <div class="small-note">This moment is saved in our browser.</div>
+  </main>
+
+  <canvas id="fireworks"></canvas>
+
+  <!-- Optional music: place music.mp3 in the same folder -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+  <script>
+    // Check that user indeed clicked yes earlier
+    if (localStorage.getItem('proposalAnswer') !== 'yes') {
+      // if someone opens directly, still show, but subtly allow.
+    }
+
+    // Start fireworks
+    startFireworks('fireworks');
+
+    // Play music if present and user interacted (autoplay restrictions):
+    const audio = document.getElementById('bgMusic');
+    // try to play after a user gesture — add a small prompt-like click
+    setTimeout(()=> {
+      // attempt autoplay; modern browsers often block autoplay w/o a gesture
+      audio.play().catch(()=> {
+        // create a visible 'Play music' button if blocked
+        const btn = document.createElement('button');
+        btn.className = 'btn small';
+        btn.textContent = 'Play Music';
+        btn.style.position = 'fixed';
+        btn.style.bottom = '20px';
+        btn.style.right = '20px';
+        btn.onclick = ()=> { audio.play(); btn.remove(); };
+        document.body.appendChild(btn);
+      });
+    }, 500);
+  </script>
+</body>
+</html>
